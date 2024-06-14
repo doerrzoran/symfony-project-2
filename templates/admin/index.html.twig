@@ -1,0 +1,43 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}{{ 'user.title'|trans|raw }}{% endblock %}
+
+{% trans_default_domain 'admin' %}
+
+{% block body %}
+    {% trans %}
+        <h1>User index</h1>
+    {% endtrans %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'id'|trans|raw }}</th>
+                <th>{{ 'email'|trans|raw }}</th>
+                <th>{{ 'roles'|trans|raw }}</th>
+                <th>{{ 'password'|trans|raw }}</th>
+                <th>{{ 'actions'|trans|raw }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>
+                    <a href="{{ path('app_admin_show', {'id': user.id}) }}">{{ 'user.actions.show'|trans|raw }}</a>
+                    <a href="{{ path('app_admin_edit', {'id': user.id}) }}">{{ 'user.actions.edit'|trans|raw }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">{{ 'user.no_records'|trans|raw }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_new') }}">{{ 'user.create_new'|trans|raw }}</a>
+{% endblock %}

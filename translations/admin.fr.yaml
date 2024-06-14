@@ -1,0 +1,14 @@
+user:
+    title: 'Liste des utilisateurs'
+    heading: 'Liste des utilisateurs'
+    table:
+        id: 'ID'
+        email: 'Email'
+        roles: 'Rôles'
+        password: 'Mot de passe'
+        actions: 'Actions'
+    actions:
+        show: 'Voir'
+        edit: 'Éditer'
+    no_records: 'Aucun enregistrement trouvé'
+    create_new: 'Créer un nouvel utilisateur'
